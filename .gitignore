@@ -1,0 +1,28 @@
+# Environment
+.env
+.env.local
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Database
+database/*.db
+*.db
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# VS Code (keep .vscode/ tracked for workspace config)
+# .vscode/
+
+# OS
+.DS_Store
+Thumbs.db

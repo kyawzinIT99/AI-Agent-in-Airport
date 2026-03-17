@@ -236,8 +236,8 @@ npm run dev
 ### 4. Environment Variables (`.env`)
 
 ```env
-# AI
-ANTHROPIC_API_KEY=sk-ant-...
+# AI (required — powers the CrewAI agents)
+OPENAI_API_KEY=sk-...
 
 # GitHub (optional — for commit reports)
 GITHUB_TOKEN=ghp_...
