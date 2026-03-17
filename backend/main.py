@@ -23,8 +23,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="AI Agent Office",
-    description="Multi-agent engineering team simulation with GitHub + Jira integration",
+    title="AI Agent Airport",
+    description="Multi-agent airport simulation with GitHub + Jira integration — Jason PA, FIDS board, plane landings",
     version="1.0.0",
     lifespan=lifespan,
 )
@@ -53,4 +53,4 @@ app.include_router(briefing.router, prefix="/api")
 
 @app.get("/api/health")
 def health():
-    return {"status": "ok", "service": "AI Agent Office"}
+    return {"status": "ok", "service": "AI Agent Airport"}
