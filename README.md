@@ -254,6 +254,52 @@ JIRA_PROJECT_KEY=PROJ
 
 ---
 
+## VS Code Setup
+
+This repo ships with a pre-configured `.vscode/` folder so testers can be up and running in one click.
+
+### Recommended Extensions
+
+Install all recommended extensions when VS Code prompts you, or install manually:
+
+| Extension | Purpose |
+|---|---|
+| Python + Pylance | Backend IntelliSense, type checking |
+| Ruff | Python linting + formatting |
+| Tailwind CSS IntelliSense | Class name autocomplete |
+| ESLint + Prettier | TypeScript / React linting |
+| Auto Rename Tag | HTML/JSX tag sync |
+
+Or install all at once:
+
+```bash
+code --install-extension ms-python.python \
+     --install-extension charliermarsh.ruff \
+     --install-extension bradlc.vscode-tailwindcss \
+     --install-extension dbaeumer.vscode-eslint \
+     --install-extension esbenp.prettier-vscode
+```
+
+### One-Click Launch (Full Stack)
+
+1. Open the project root in VS Code: `code .`
+2. Press `F5` → select **Full Stack (Backend + Frontend)**
+3. Both servers start automatically in the integrated terminal
+4. Open `http://localhost:5174/office`
+
+Or launch individually:
+- **Backend only** → `F5` → *Backend — FastAPI (uvicorn)*
+- **Frontend only** → `F5` → *Frontend — Vite Dev Server*
+
+### Python Interpreter
+
+VS Code will auto-detect `.venv` as the Python interpreter. If not:
+
+1. `Ctrl+Shift+P` → *Python: Select Interpreter*
+2. Choose `./.venv/bin/python`
+
+---
+
 ## Voice System
 
 All speech uses the **Web Speech API** (no API key needed, runs in-browser).
