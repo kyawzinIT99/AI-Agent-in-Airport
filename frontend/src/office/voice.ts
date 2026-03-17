@@ -24,11 +24,10 @@ const PROFILES: Record<string, VoiceProfile> = {
 
 let _enabled = true
 let _voices: SpeechSynthesisVoice[] = []
-let _ready = false
+
 
 function _loadVoices() {
   _voices = window.speechSynthesis.getVoices()
-  _ready = _voices.length > 0
 }
 
 // Voices load asynchronously in some browsers
@@ -103,8 +102,8 @@ export interface LiveData {
   }>
   scheduleToday: Array<{
     title: string
-    start_time: string
-    end_time: string
+    start_time?: string
+    end_time?: string
     category: string
   }>
 }
@@ -140,13 +139,13 @@ export function buildLiveScript(data: LiveData) {
   if (scheduleToday.length === 0) {
     qaText += `Your calendar is clear today — no events scheduled. Consider blocking time for focused work.`
   } else {
-    const sorted = [...scheduleToday].sort((a, b) => a.start_time.localeCompare(b.start_time))
+    const sorted = [...scheduleToday].sort((a, b) => (a.start_time ?? '').localeCompare(b.start_time ?? ''))
     qaText += `You have ${scheduleToday.length} event${scheduleToday.length > 1 ? 's' : ''} today. `
     const first = sorted[0]
-    qaText += `Your day starts with "${first.title}" at ${_readableTime(first.start_time)}.`
+    qaText += `Your day starts with "${first.title}"${first.start_time ? ` at ${_readableTime(first.start_time)}` : ''}.`
     if (sorted.length > 1) {
       const last = sorted[sorted.length - 1]
-      qaText += ` It wraps up with "${last.title}" ending at ${_readableTime(last.end_time)}.`
+      qaText += ` It wraps up with "${last.title}"${last.end_time ? ` ending at ${_readableTime(last.end_time)}` : ''}.`
     }
     const meetings = sorted.filter(e => e.category === 'meeting')
     if (meetings.length) qaText += ` You have ${meetings.length} meeting${meetings.length > 1 ? 's' : ''} — protect time around them for prep and recovery.`

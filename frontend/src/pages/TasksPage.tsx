@@ -91,7 +91,7 @@ export function TasksPage() {
               { label: 'Category', key: 'category', opts: CATEGORIES },
               { label: 'Status',   key: 'status',   opts: STATUSES   },
             ].map(f => (
-              <select key={f.key} value={(form as Record<string, string>)[f.key]}
+              <select key={f.key} value={(form as unknown as Record<string, string>)[f.key]}
                 onChange={e => setForm({...form, [f.key]: e.target.value})}
                 className="bg-slate-900 border border-slate-600 rounded-lg px-2 py-2 text-white text-sm">
                 {f.opts.map(o => <option key={o} value={o}>{o}</option>)}
